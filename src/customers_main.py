@@ -22,12 +22,8 @@ def makelogs(input_dir: str, output_dir: str):
 
     input_data = []
     for file_name in os.listdir(input_dir):
-        file_path = os.path.join(input_dir, file_name)
 
-        if os.path.isfile(file_path):
-            with open(file_path, "r") as f:
-                input_data.append(f.read())
-                print(input_data[-1])
+        print(file_name)
 
 
     # Start a TensorBoard writer
@@ -54,9 +50,6 @@ def makelogs(input_dir: str, output_dir: str):
     # Close the TensorBoard writer
     writer.close()
 
-    # filename = 'artefacts.txt'
-    # with open(os.path.join(output_dir,filename), "w") as f:
-    #     f.write("This is an artefact file.")
     
     typer.echo(f"Artefacts generated in {output_dir}!")
 

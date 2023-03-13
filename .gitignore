@@ -1,6 +1,9 @@
 # cli tensorboard
 
 src/artefacts
+src/download
+.venv/
+.vscode/
 
 
 .idea

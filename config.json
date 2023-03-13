@@ -1,24 +1,11 @@
 {
-    "name": "Application Name",
-    "type": "app",
-    "version": "2.0.0",
-    "categories": [
-      ""
-    ],
-    "description": "application description",
-    "docker_image": "supervisely/base-py-sdk:latest",
-    "entrypoint": "python -m uvicorn src.main:g.app --host 0.0.0.0 --port 8000",
-    "port": 8000,
-    "task_location": "workspace_tasks",
-    "icon_background": "#FFFFFF",
-
-    "icon": "https://imgur.com/a9u0M3Y.png",
-    "icon_cover": true,
-
+    "release": { "version":"v0.0.1", "name":"init" },
+    "slug": "grokhi/cli-tensorboard",
+    "name": "Supervisely cli tensorboard",
+    "main_script": "src/main.py",
     "headless": true,
-    "instance_version": "6.4.45",
-
-    "context_menu": {
-        "target": ["images_project"]
-    }
+    "description": "Demonstrates how to turn your python script into Supervisely App",
+    "categories": ["development"],
+    "icon": "https://user-images.githubusercontent.com/12828725/182186256-5ee663ad-25c7-4a62-9af1-fbfdca715b57.png",
+    "poster": "https://user-images.githubusercontent.com/12828725/182181033-d0d1a690-8388-472e-8862-e0cacbd4f082.png"
 }
