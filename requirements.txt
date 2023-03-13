@@ -2,7 +2,7 @@
 supervisely
 typer
 tensorboard
-torch
+# torch
 
 # used to print cool text to stdout
 # art==5.7 

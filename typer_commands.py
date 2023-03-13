@@ -3,7 +3,6 @@ import typer
 import os
 import shutil
 
-# breakpoint()
 
 import src.globals_ as g
 
@@ -52,14 +51,7 @@ def set_task_output_dir(task_id: int, remote_dir: str):
     and logs the training process.
     """
 
-    task_id = g.TASK_ID
     
-    # breakpoint()
-
-    # _open_lnk_name = "open_app.lnk"
-
-    # os.path.join(remote_dir, _open_lnk_name)
-
     files = g.api.file.listdir(g.TEAM_ID, remote_dir)
     
     file_info = g.api.file.get_info_by_path(
