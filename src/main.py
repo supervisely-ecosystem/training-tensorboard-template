@@ -1,6 +1,14 @@
 
 import subprocess
 
+import os, sys
+# Add the 'src' directory to the Python module search path
+# sys.path.append(os.path.join(
+#     os.getcwd(), 'src')
+# )
+
+
+
 # import src.globals
 
 
@@ -13,7 +21,9 @@ import subprocess
 def main():
     subprocess.call("./run.sh", shell=True)
 
-    print('Shell script executed with success')
+    print('Shell script executed')
+
+    
 
     
 

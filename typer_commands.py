@@ -1,8 +1,11 @@
 import supervisely as sly
 import typer
 import os
+import shutil
 
-import src.globals as g
+# breakpoint()
+
+import src.globals_ as g
 
 app = typer.Typer()
 
@@ -14,6 +17,11 @@ def download(project_id: int, save_dir: str):
     and logs the training process.
     """
     typer.echo(f"Downloading data from {project_id} to directory: {save_dir}")
+
+    # breakpoint()
+
+    if os.path.exists(save_dir):
+        shutil.rmtree(save_dir)
 
     sly.download_project(g.api, project_id, save_dir)
     
@@ -38,22 +46,30 @@ def upload_directory(team_id: int, from_dir: str, to_dir: str):
 
 
 @app.command('set-task-output-dir')
-def set_task_output_dir(task_id: int, sly_dir: str):
+def set_task_output_dir(task_id: int, remote_dir: str):
     """
     Downloads fake data, trains a model, generates artifacts as output data,
     and logs the training process.
     """
 
-    task_id = 28577
-
-    file_info = g.api.file.get_info_by_path(
-        g.TEAM_ID, sly_dir
-    )
-        
-    g.api.task.set_output_directory(task_id, file_info.id, sly_dir)
+    task_id = g.TASK_ID
     
+    # breakpoint()
 
-    typer.echo(f"set_output_directory finished: {sly_dir}")
+    # _open_lnk_name = "open_app.lnk"
+
+    # os.path.join(remote_dir, _open_lnk_name)
+
+    files = g.api.file.listdir(g.TEAM_ID, remote_dir)
+    
+    file_info = g.api.file.get_info_by_path(
+        g.TEAM_ID, files[0]
+    )
+
+    g.api.task.set_output_directory(task_id, file_info.id, remote_dir)
+    
+    typer.echo(f"set_output_directory finished: {remote_dir}")
+
 
 if __name__ == "__main__":
     app()
