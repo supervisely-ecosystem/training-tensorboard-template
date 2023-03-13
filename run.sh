@@ -12,3 +12,4 @@ python3 typer_commands.py upload-directory 449 src/download/ds1/img/ /uploaddir 
 
 # supervisely (cli) set-task-output-dir ${TASK_ID} "/my-training/{TASK_id}{PROJECT_NAME}-{PROJECT_ID}"
 python3 typer_commands.py set-task-output-dir 28737 /uploaddir
+

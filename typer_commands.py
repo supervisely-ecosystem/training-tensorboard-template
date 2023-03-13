@@ -4,7 +4,7 @@ import os
 import shutil
 
 
-import src.globals_ as g
+import globals as g
 
 app = typer.Typer()
 
@@ -50,7 +50,6 @@ def set_task_output_dir(task_id: int, remote_dir: str):
     Downloads fake data, trains a model, generates artifacts as output data,
     and logs the training process.
     """
-
     
     files = g.api.file.listdir(g.TEAM_ID, remote_dir)
     
