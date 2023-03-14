@@ -1,5 +1,5 @@
 {
-    "release": { "version":"v0.0.19", "name":"init" },
+    "release": { "version":"v0.0.22", "name":"init" },
     "slug": "grokhi/cli-tensorboard",
     "name": "Supervisely cli tensorboard",
     "entrypoint": "sh run.sh",

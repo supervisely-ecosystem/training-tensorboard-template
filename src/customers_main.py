@@ -2,12 +2,10 @@ import supervisely as sly
 
 from torch.utils.tensorboard import SummaryWriter
 
-
 import typer
 import os
 
 app = typer.Typer()
-
 
 @app.command()
 def makelogs(input_dir: str, output_dir: str):
@@ -15,7 +13,7 @@ def makelogs(input_dir: str, output_dir: str):
     Downloads fake data, trains a model, generates artifacts as output data,
     and logs the training process.
     """
-    typer.echo(f"Opening fake data from {input_dir}...")
+    typer.echo(f"Opening data from {input_dir}...")
 
 
     for file_name in os.listdir(input_dir):

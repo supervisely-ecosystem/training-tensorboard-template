@@ -15,8 +15,8 @@ api: sly.Api = sly.Api.from_env()
 
 TEAM_ID = sly.env.team_id()
 WORKSPACE_ID = sly.env.workspace_id()
-# PROJECT_ID = sly.env.project_id()
-PROJECT_ID = 17732
+PROJECT_ID = sly.env.project_id()
+# PROJECT_ID = 17732
 
 project_info = api.project.get_info_by_id(PROJECT_ID)
 
