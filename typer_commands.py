@@ -49,10 +49,8 @@ def set_task_output_dir(task_id: int, remote_dir: str):
     Downloads fake data, trains a model, generates artifacts as output data,
     and logs the training process.
     """
-    typer.echo(f"Setting task {task_id} for output directory: {remote_dir}")
 
     
-    print('dir exists?:', g.api.file.dir_exists(g.TEAM_ID, remote_dir))
     
 
     # .listdir() not working with environmental variables
@@ -66,7 +64,7 @@ def set_task_output_dir(task_id: int, remote_dir: str):
 
     g.api.task.set_output_directory(task_id, file_info.id, remote_dir)
     
-    typer.echo(f"set_output_directory finished: {remote_dir}")
+    typer.echo(f"Setting finished.")
 
 
 if __name__ == "__main__":

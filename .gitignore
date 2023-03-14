@@ -5,6 +5,8 @@ src/download
 .venv/
 .vscode/
 
+/sly-cli-tensorboard/
+
 
 .idea
 
