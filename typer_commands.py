@@ -4,10 +4,9 @@ import os
 import shutil
 
 
-import globals as g
+import src.globals as g
 
 app = typer.Typer()
-
 
 @app.command('download')
 def download(project_id: int, save_dir: str):
@@ -50,11 +49,19 @@ def set_task_output_dir(task_id: int, remote_dir: str):
     Downloads fake data, trains a model, generates artifacts as output data,
     and logs the training process.
     """
+    typer.echo(f"Setting task {task_id} for output directory: {remote_dir}")
+
     
-    files = g.api.file.listdir(g.TEAM_ID, remote_dir)
+    print('dir exists?:', g.api.file.dir_exists(g.TEAM_ID, remote_dir))
+    
+
+    # .listdir() not working with environmental variables
+    files = g.api.file.list(g.TEAM_ID, remote_dir)
+
     
     file_info = g.api.file.get_info_by_path(
-        g.TEAM_ID, files[0]
+        g.TEAM_ID, 
+        os.path.join(remote_dir, files[0]['name'])
     )
 
     g.api.task.set_output_directory(task_id, file_info.id, remote_dir)
