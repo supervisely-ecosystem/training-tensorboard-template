@@ -1,10 +1,10 @@
 #!/bin/bash
 
-set_shell_env() {
-    output=$(python3 src/export_env.py)
-    eval $output
-}
-set_shell_env
+# set_shell_env() {
+#     output=$(python3 src/export_env.py)
+#     eval $output
+# }
+# set_shell_env
 
 # echo prName is: $PROJECT_NAME
 
@@ -25,4 +25,4 @@ set_shell_env
 # supervisely (cli) set-task-output-dir ${TASK_ID} "/my-training/{TASK_id}{PROJECT_NAME}-{PROJECT_ID}"
 # python3 typer_commands.py set-task-output-dir ${TASK_ID} /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/
 
-tensorboard --logdir src/artefacts --port 8000
+tensorboard --logdir src/artefacts --port 8000 --host 0.0.0.0
