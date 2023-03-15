@@ -2,4 +2,4 @@ supervisely
 typer
 tensorboard
 poetry
-torch
+# torch

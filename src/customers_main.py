@@ -1,4 +1,5 @@
 import supervisely as sly
+import time
 
 from torch.utils.tensorboard import SummaryWriter
 
@@ -29,6 +30,7 @@ def makelogs(input_dir: str, output_dir: str):
     typer.echo(f"Generating output artifacts in {output_dir}...")
 
     for step in range(50):
+        # time.sleep(1)
         loss = 1.0 / (step + 1)
 
         # Log the data to TensorBoard
