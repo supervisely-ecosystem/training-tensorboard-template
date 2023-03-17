@@ -1,12 +1,12 @@
 # cli tensorboard
-
-src/artefacts
-src/download
+# *.GROKHIMACHINE.*
+# *.txt
+# src/artefacts
+# src/download
 .venv/
 .vscode/
 
 /sly-cli-tensorboard/
-
 
 .idea
 
@@ -139,3 +139,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+

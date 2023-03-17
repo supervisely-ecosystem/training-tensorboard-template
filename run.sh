@@ -1,28 +1,32 @@
-#!/bin/bash
+# !/bin/bash
 
 # set_shell_env() {
 #     output=$(python3 src/export_env.py)
 #     eval $output
 # }
 # set_shell_env
+# python3 src/export_env.py
+python3 src/main.py && \
+PROJECT_NAME=`cat project_name.txt` && \
 
-# echo prName is: $PROJECT_NAME
 
-# supervisely (cli) download --project_id=${PROJECT_ID} --save-dir="/a/b/c" && \
-# python3 typer_commands.py download ${PROJECT_ID} src/download/ && \
-# sly-cli download ${PROJECT_ID} src/download/ && \
+echo prID is: $PROJECT_ID && \
+echo prName is: $PROJECT_NAME && \
 
-# nohup tensorboard --logdir src/artefacts --port 8000 & python3 src/customers_main.py src/download/ds1/img src/artefacts/
+python3 typer_commands.py download ${PROJECT_ID} src/download/ && \
 
-# nohup tensorboard --logdir src/artefacts --port 8000 & \
-# python3 src/customers_main.py src/download/ds1/img src/artefacts/ && \
+# echo "$(pwd)" && \
+# echo Root:
+# echo "$(ls)" && \
+# echo "$(cd src/ && ls)" && \
+# echo "$(cd src/download/ds1/img && ls)" && \
 
-# supervisely (cli) upload_directory --tesm_id=${TEAM_ID} --from="/artifacts" --to="/my-training/{TASK_id}{PROJECT_NAME}-{PROJECT_ID}"
-# python3 typer_commands.py upload-directory ${TEAM_ID} src/artefacts/ /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
-# sly-cli upload-directory ${TEAM_ID} src/download/ds1/img/ /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
-# && \
+# nohup tensorboard &> output & sleep 5 &
+# python script.py &
 
-# supervisely (cli) set-task-output-dir ${TASK_ID} "/my-training/{TASK_id}{PROJECT_NAME}-{PROJECT_ID}"
-# python3 typer_commands.py set-task-output-dir ${TASK_ID} /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/
+nohup tensorboard --logdir src/artefacts --port 8000  --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 && \
 
-tensorboard --logdir src/artefacts --port 8000 --host 0.0.0.0
+python3 src/customers_main.py src/download/ds1/img /src/artefacts/ && \
+
+python3 typer_commands.py upload-directory ${TEAM_ID} /src/artefacts/ /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
+python3 typer_commands.py set-task-output-dir ${TASK_ID} /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/

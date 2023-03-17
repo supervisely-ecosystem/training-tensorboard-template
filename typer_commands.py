@@ -50,9 +50,6 @@ def set_task_output_dir(task_id: int, remote_dir: str):
     and logs the training process.
     """
 
-    
-    
-
     # .listdir() not working with environmental variables
     files = g.api.file.list(g.TEAM_ID, remote_dir)
 

@@ -19,13 +19,21 @@ PROJECT_ID = sly.env.project_id()
 # PROJECT_ID = 17732
 
 project_info = api.project.get_info_by_id(PROJECT_ID)
-
 PROJECT_NAME = strip_with_replacement(project_info.name, '_')
 
-# print(PROJECT_NAME)
+with open("project_name.txt", "w") as text_file:
+    text_file.write(PROJECT_NAME)
 
 TASK_ID = sly.env.task_id()
 # DATASET_ID = sly.env.dataset_id(raise_not_found=False)
+
+SYNCED_DIR = sly.app.get_synced_data_dir()
+# with open("synced_dir.txt", "w") as text_file:
+#     text_file.write(synced_dir)
+
+
+
+
 
 
 

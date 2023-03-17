@@ -3,6 +3,8 @@ import time
 
 from torch.utils.tensorboard import SummaryWriter
 
+import src.globals as g
+
 import typer
 import os
 
@@ -25,30 +27,41 @@ def makelogs(input_dir: str, output_dir: str):
 
     # Start a TensorBoard writer
     writer = SummaryWriter(output_dir)
+    # writer = tf.summary.create_file_writer(output_dir)
 
     typer.echo("Training model...")
     typer.echo(f"Generating output artifacts in {output_dir}...")
 
     for step in range(50):
-        # time.sleep(1)
+        time.sleep(5)
         loss = 1.0 / (step + 1)
 
         # Log the data to TensorBoard
         writer.add_scalar('Loss', loss, step)
+        # tf.summary.scalar('Loss', loss, step)
 
         print(f"Step {step}, loss={loss:.4f}")
 
-        file_path = os.path.join(output_dir, f'step_{step}.txt')
+        file_path = os.path.join(output_dir, f'step_{str(step).zfill(len(str(50)))}.txt')
         
         with open(file_path, 'w') as f:
             f.write('Step\tLoss\n')
             f.write(f'{step}\t{loss:.4f}\n')
+
+        # backup to synced dir
+        # sly.fs.copy_file(src=file_path, dst=synced_dir)
+        g.api.file.upload(g.TEAM_ID, file_path, g.SYNCED_DIR)
+        print(f"File {file_path} backed up to synced dir!")
                
 
     # Close the TensorBoard writer
     writer.close()
+
+
     
     typer.echo(f"Artefacts generated in {output_dir}!")
+
+    typer.echo(f"Deleting synced dir...")
 
 
 if __name__ == "__main__":

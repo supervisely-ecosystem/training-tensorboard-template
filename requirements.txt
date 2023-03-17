@@ -1,4 +1,5 @@
 supervisely
 typer
 tensorboard
-# torch
+torch
+# tensorflow
