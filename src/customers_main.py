@@ -3,10 +3,11 @@ import time
 
 from torch.utils.tensorboard import SummaryWriter
 
-import src.globals as g
+import globals as g
 
 import typer
 import os
+
 
 app = typer.Typer()
 
@@ -25,14 +26,20 @@ def makelogs(input_dir: str, output_dir: str):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
+
     # Start a TensorBoard writer
     writer = SummaryWriter(output_dir)
     # writer = tf.summary.create_file_writer(output_dir)
 
+
+    typer.echo(f'Synced dir: {g.SYNCED_DIR}')
     typer.echo("Training model...")
     typer.echo(f"Generating output artifacts in {output_dir}...")
 
-    for step in range(50):
+    n_iter = 30
+    progress = sly.Progress(message='Generating data...',total_cnt=n_iter)
+
+    for step in range(n_iter):
         time.sleep(5)
         loss = 1.0 / (step + 1)
 
@@ -40,7 +47,7 @@ def makelogs(input_dir: str, output_dir: str):
         writer.add_scalar('Loss', loss, step)
         # tf.summary.scalar('Loss', loss, step)
 
-        print(f"Step {step}, loss={loss:.4f}")
+        typer.echo(f"Step {step}, loss={loss:.4f}")
 
         file_path = os.path.join(output_dir, f'step_{str(step).zfill(len(str(50)))}.txt')
         
@@ -49,19 +56,30 @@ def makelogs(input_dir: str, output_dir: str):
             f.write(f'{step}\t{loss:.4f}\n')
 
         # backup to synced dir
-        # sly.fs.copy_file(src=file_path, dst=synced_dir)
-        g.api.file.upload(g.TEAM_ID, file_path, g.SYNCED_DIR)
-        print(f"File {file_path} backed up to synced dir!")
+        synced_file = os.path.join(
+            g.SYNCED_DIR, os.path.basename(file_path)
+        )
+        g.api.file.upload(g.TEAM_ID, file_path, synced_file)
+        # g.api.file.upload_directory(
+        #     g.TEAM_ID, output_dir, g.SYNCED_DIR
+        # )
+        typer.echo(f"File {file_path} backed up to synced dir {g.SYNCED_DIR}!")
+
+        progress.iter_done_report()
                
 
     # Close the TensorBoard writer
     writer.close()
 
-
     
     typer.echo(f"Artefacts generated in {output_dir}!")
 
     typer.echo(f"Deleting synced dir...")
+    for filename in g.api.file.list(g.SYNCED_DIR):
+        g.api.file.remove(g.TEAM_ID, filename)
+
+    # g.api.file.d
+    # g.api.file.re
 
 
 if __name__ == "__main__":

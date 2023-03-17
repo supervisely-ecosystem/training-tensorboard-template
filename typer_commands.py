@@ -3,7 +3,6 @@ import typer
 import os
 import shutil
 
-
 import src.globals as g
 
 app = typer.Typer()
