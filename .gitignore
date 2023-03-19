@@ -5,6 +5,6 @@ tmp/
 .vscode/
 
 src/__pycache__
-typer_commands.py
+# typer_commands.py
 
 run_debug.sh
