@@ -1,11 +1,7 @@
-import os, json, re
+import os, re
 
 import supervisely as sly
 from dotenv import load_dotenv
-
-
-def strip_with_replacement(text, replacement):
-    return re.sub(r'\s+', replacement, text)
 
 if sly.is_development():
     load_dotenv("local.env")
@@ -16,27 +12,25 @@ api: sly.Api = sly.Api.from_env()
 TEAM_ID = sly.env.team_id()
 WORKSPACE_ID = sly.env.workspace_id()
 PROJECT_ID = sly.env.project_id()
-# PROJECT_ID = 17732
+TASK_ID = sly.env.task_id()
 
 project_info = api.project.get_info_by_id(PROJECT_ID)
-PROJECT_NAME = strip_with_replacement(project_info.name, '_')
-
-with open("PROJECT_NAME.txt", "w") as text_file:
-    text_file.write(PROJECT_NAME)
 
 
+def strip_with_replacement(text, replacement):
+    return re.sub(r'\s+', replacement, text)
+project_name = strip_with_replacement(project_info.name, '_')
 
-TASK_ID = sly.env.task_id()
-# DATASET_ID = sly.env.dataset_id(raise_not_found=False)
 
-# breakpoint()
+with open("project_name.txt", "w") as text_file:
+    text_file.write(project_name)
 
-SYNCED_DIR = os.path.join(
+
+synced_dir = os.path.join(
     sly.app.get_synced_data_dir(),
-    f'{TASK_ID}-{PROJECT_NAME}-{PROJECT_ID}'
+    f'{TASK_ID}-{project_name}-{PROJECT_ID}'
 )
-print(SYNCED_DIR)
 
-# with open("synced_dir.txt", "w") as text_file:
-#     text_file.write(synced_dir)
+with open("synced_dir.txt", "w") as text_file:
+    text_file.write(synced_dir)
 
