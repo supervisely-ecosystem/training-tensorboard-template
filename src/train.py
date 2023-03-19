@@ -12,6 +12,7 @@ import os
 
 app = typer.Typer()
 
+
 @app.command()
 def train(input_dir, output_dir, team_id, synced_dir):
     """
@@ -20,6 +21,7 @@ def train(input_dir, output_dir, team_id, synced_dir):
     """
     typer.echo(f"Opening data from {input_dir}...")
 
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -27,11 +29,12 @@ def train(input_dir, output_dir, team_id, synced_dir):
     # Start a TensorBoard writer
     writer = SummaryWriter(output_dir)
 
+
     typer.echo("Training model...")
     typer.echo(f"Generating output artifacts in {output_dir}...")
 
 
-    n_iter = 30
+    n_iter = 10
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
 
     for step in range(n_iter):
@@ -54,7 +57,7 @@ def train(input_dir, output_dir, team_id, synced_dir):
             synced_dir, os.path.basename(file_path)
         )
         api.file.upload(team_id, file_path, synced_file)
-        typer.echo(f"File {file_path} backed up to synced dir {synced_dir}!")
+        typer.echo(f"File {file_path} backed up to synced dir {synced_dir}")
 
         # update progress in workspace tasks interface
         progress.iter_done_report()

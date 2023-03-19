@@ -62,6 +62,13 @@ def set_task_output_dir(team_id, task_id: int, remote_dir: str):
     
     typer.echo(f"Setting finished.")
 
+@app.command('teamfiles-remove')
+def remove(team_id, path):
+
+    g.api.file.remove(team_id, path)
+
+    typer.echo(f"Directory {path} deleted")
+
 
 if __name__ == "__main__":
     app()
