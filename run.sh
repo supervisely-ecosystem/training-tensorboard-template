@@ -1,33 +1,18 @@
 # !/bin/bash
-
 set_shell_env() {
     output=$(python3 src/export_env.py)
     eval $output
 }
+# get $PROJECT_NAME
 set_shell_env
-python3 src/export_env.py
 
-# python3 src/export_env.py && \
-# PROJECT_NAME=`cat project_name.txt` && \
+supervisely download-project --project-id ${PROJECT_ID} --save-dir tmp/training_data/ && \
 
-
-echo prID is: $PROJECT_ID && \
-echo prName is: $PROJECT_NAME && \
-
-python3 typer_commands.py download ${PROJECT_ID} src/download/ && \
-
-# echo "$(pwd)" && \
-# echo Root:
-# echo "$(ls)" && \
-# echo "$(cd src/ && ls)" && \
-# echo "$(cd src/download/ds1/img && ls)" && \
-
-# nohup tensorboard &> output & sleep 5 &
-# python script.py &
 
 nohup tensorboard --logdir src/artefacts --port 8000  --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 && \
+python3 src/train.py tmp/training_data/ tmp/artefacts/ && \
 
-python3 src/customers_main.py src/download/ds1/img src/artefacts/ && \
 
-python3 typer_commands.py upload-directory ${TEAM_ID} src/artefacts/ /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
-python3 typer_commands.py set-task-output-dir ${TASK_ID} /uploaddir/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/
+supervisely upload-to-teamfiles --team-id ${TEAM_ID} --from-local-dir tmp/artefacts/ --to-teamfiles-dir /upload/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
+
+supervisely set-task-output-dir --team-id ${TEAM_ID} --task-id ${TASK_ID} --teamfiles-dir /upload/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/

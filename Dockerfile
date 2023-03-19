@@ -3,7 +3,7 @@ FROM tensorflow/tensorflow
 
 USER root
 
-# RUN pip install supervisely
+RUN pip install supervisely
 # RUN pip install tensorboard
 # RUN pip install typer
 # RUN pip install torch

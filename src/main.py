@@ -21,14 +21,22 @@ PROJECT_ID = sly.env.project_id()
 project_info = api.project.get_info_by_id(PROJECT_ID)
 PROJECT_NAME = strip_with_replacement(project_info.name, '_')
 
+with open("PROJECT_NAME.txt", "w") as text_file:
+    text_file.write(PROJECT_NAME)
+
+
 
 TASK_ID = sly.env.task_id()
 # DATASET_ID = sly.env.dataset_id(raise_not_found=False)
 
+# breakpoint()
+
 SYNCED_DIR = os.path.join(
     sly.app.get_synced_data_dir(),
-    f'backup/{TASK_ID}-{PROJECT_NAME}-{PROJECT_ID}'
+    f'{TASK_ID}-{PROJECT_NAME}-{PROJECT_ID}'
 )
+print(SYNCED_DIR)
+
 # with open("synced_dir.txt", "w") as text_file:
 #     text_file.write(synced_dir)
 

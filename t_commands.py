@@ -3,7 +3,7 @@ import typer
 import os
 import shutil
 
-import src.globals as g
+import src.main as g
 
 app = typer.Typer()
 

@@ -2,8 +2,9 @@
 # *.GROKHIMACHINE.*
 # *.txt
 # src/artefacts
-# src/download
+tmp/
 .venv/
+.venv_/
 .vscode/
 
 /sly-cli-tensorboard/
@@ -141,3 +142,5 @@ dmypy.json
 .pyre/
 
 
+run_debug.sh
+commands.py
