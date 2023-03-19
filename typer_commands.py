@@ -22,7 +22,7 @@ def download(project_id: int, save_dir: str):
 
     sly.download_project(g.api, project_id, save_dir)
     
-    typer.echo(f"Project saved to {save_dir}!")
+    typer.echo(f"Project saved to {save_dir}")
 
 
 @app.command('upload-to-teamfiles')
