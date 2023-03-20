@@ -5,7 +5,7 @@ python3 src/main.py && \
 python3 typer_commands.py download-project ${PROJECT_ID} tmp/training_data/ && \
 
 # run tensorboard
-nohup tensorboard --logdir src/artefacts --port 8000  --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 && \
+nohup tensorboard --logdir tmp/artefacts --port 8000  --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 && \
 
 SYNCED_DIR=`cat synced_dir.txt` && \
 echo "Synced dir for backup while training: " $SYNCED_DIR && \
@@ -22,7 +22,7 @@ echo "Project name: " $PROJECT_NAME && \
 python3 typer_commands.py upload-to-teamfiles ${TEAM_ID} tmp/artefacts/ /upload/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/ && \
 
 # remove useless synced_dir
-# supervisely teamfiles-remove --team-id $TEAM_ID --path $SYNCED_DIR 
+# supervisely remove-teamfiles --team-id $TEAM_ID --path $SYNCED_DIR 
 python3 typer_commands.py remove-teamfiles $TEAM_ID $SYNCED_DIR && \
 
 # update worscpace interface
