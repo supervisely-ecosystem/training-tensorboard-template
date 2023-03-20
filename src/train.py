@@ -37,6 +37,7 @@ def train(input_dir, output_dir, team_id, synced_dir):
     n_iter = 10
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
 
+
     for step in range(n_iter):
 
         time.sleep(5) # imitates training process
@@ -66,15 +67,8 @@ def train(input_dir, output_dir, team_id, synced_dir):
     # Close the TensorBoard writer
     writer.close()
 
-    
     typer.echo(f"Artefacts generated in {output_dir}!")
 
-    # typer.echo(f"Deleting synced dir...")
-    # for filename in api.file.list(SYNCED_DIR):
-    #     api.file.remove(TEAM_ID, filename)
-
-    # api.file.d
-    # api.file.re
 
 
 if __name__ == "__main__":

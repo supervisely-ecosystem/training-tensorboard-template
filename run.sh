@@ -23,7 +23,7 @@ python3 typer_commands.py upload-to-teamfiles ${TEAM_ID} tmp/artefacts/ /upload/
 
 # remove useless synced_dir
 # supervisely teamfiles-remove --team-id $TEAM_ID --path $SYNCED_DIR 
-python3 typer_commands.py teamfiles-remove $TEAM_ID $SYNCED_DIR && \
+python3 typer_commands.py remove-teamfiles $TEAM_ID $SYNCED_DIR && \
 
 # update worscpace interface
 # supervisely set-task-output-dir --team-id ${TEAM_ID} --task-id ${TASK_ID} --teamfiles-dir /upload/${TASK_ID}-${PROJECT_NAME}-${PROJECT_ID}/
