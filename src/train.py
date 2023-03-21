@@ -47,7 +47,7 @@ def train(input_dir, output_dir, team_id, synced_dir):
         writer.add_scalar('Loss', loss, step)
         typer.echo(f"Step {step}, loss={loss:.4f}")
 
-        file_path = os.path.join(output_dir, f'step_{str(step).zfill(len(str(50)))}.txt')
+        file_path = os.path.join(output_dir, f'step_{str(step).zfill(len(str(n_iter)))}.txt')
         
         with open(file_path, 'w') as f:
             f.write('Step\tLoss\n')
