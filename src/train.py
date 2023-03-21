@@ -1,20 +1,20 @@
 import supervisely as sly
 import time
 
-from torch.utils.tensorboard import SummaryWriter
-
-api: sly.Api = sly.Api.from_env()
-
-
 import typer
 import os
 
+from torch.utils.tensorboard import SummaryWriter
 
+api: sly.Api = sly.Api.from_env()
 app = typer.Typer()
 
 
 @app.command()
-def train(input_dir, output_dir, team_id, synced_dir):
+def train(    
+        input_dir: str = typer.Option(..., "--input-dir", "-i", help="Input directory"),
+        output_dir: str = typer.Option(..., "--output-dir", "-o", help="Output directory"),
+    ):
     """
     Gets data from input_dir, trains a model, generates artefacts as output data,
     and logs the training process. Generated artefacts backed up using synced_dir.
@@ -25,14 +25,11 @@ def train(input_dir, output_dir, team_id, synced_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-
     # Start a TensorBoard writer
     writer = SummaryWriter(output_dir)
 
-
     typer.echo("Training model...")
     typer.echo(f"Generating output artifacts in {output_dir}...")
-
 
     n_iter = 10
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
@@ -53,23 +50,12 @@ def train(input_dir, output_dir, team_id, synced_dir):
             f.write('Step\tLoss\n')
             f.write(f'{step}\t{loss:.4f}\n')
 
-        # backup to synced_dir
-        synced_file = os.path.join(
-            synced_dir, os.path.basename(file_path)
-        )
-        api.file.upload(team_id, file_path, synced_file)
-        typer.echo(f"File {file_path} backed up to synced dir {synced_dir}")
-
-        # update progress in workspace tasks interface
         progress.iter_done_report()
                
-
     # Close the TensorBoard writer
     writer.close()
 
     typer.echo(f"Artefacts generated in {output_dir}!")
-
-
 
 if __name__ == "__main__":
     app()

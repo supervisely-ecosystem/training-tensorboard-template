@@ -9,3 +9,4 @@ src/__pycache__
 
 run_debug.sh
 .venv
+main_debug.py

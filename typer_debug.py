@@ -3,7 +3,7 @@ import typer
 import os
 import shutil
 
-import src.main as g
+import globals_debug as g
 
 app = typer.Typer()
 
@@ -50,19 +50,19 @@ def set_task_output_dir(team_id, task_id: int, remote_dir: str):
     """
 
     # .listdir() not working with environmental variables
-    files = g.api.file.list(team_id, remote_dir)
+    files = g.api.file.list2(team_id, remote_dir, recursive=False)
 
     
     file_info = g.api.file.get_info_by_path(
         team_id, 
-        files[0]['path']
+        files[0].path
     )
 
     g.api.task.set_output_directory(task_id, file_info.id, remote_dir)
     
     typer.echo(f"Setting finished.")
 
-@app.command('remove-teamfiles')
+@app.command('remove-dir')
 def remove(team_id, path):
 
     g.api.file.remove(team_id, path)
