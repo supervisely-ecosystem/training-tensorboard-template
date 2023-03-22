@@ -8,6 +8,9 @@ then
     source ~/supervisely.env
 fi && \
 
+INPUT_DIR=
+OUTPUT_DIR=
+
 # supervisely download-project --id ${PROJECT_ID} --dir tmp/training_data/ && \
 python3 typer_debug.py download-project ${PROJECT_ID} tmp/training_data/ && \
 
