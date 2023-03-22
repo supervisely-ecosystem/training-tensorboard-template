@@ -34,6 +34,7 @@ python3 src/train.py --input-dir tmp/training_data/ --output-dir $SYNCED_DIR && 
 # supervisely upload-to-teamfiles --team-id ${TEAM_ID} --local-dir $SYNCED_DIR --remote-dir /my-training/${TASK_ID}-${PROJECT_ID}-${PROJECT_NAME}/ && \
 python3 typer_debug.py upload-to-teamfiles ${TEAM_ID} $SYNCED_DIR /my-training/${TASK_ID}-${PROJECT_ID}-${PROJECT_NAME}/ && \
 
+WHAT IF FAIL?
 
 # remove useless synced_dir
 
