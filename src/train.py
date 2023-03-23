@@ -21,7 +21,7 @@ def train(input_dir: str, output_dir: str) -> None:
     print("Training model...")
     print(f"Generating output artifacts in {output_dir}...")
 
-    n_iter = 10
+    n_iter = 3
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
 
     for step in range(n_iter):

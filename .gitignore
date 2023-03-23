@@ -12,3 +12,5 @@ run_debug.sh
 .venv
 main_debug.py
 typer_old.py
+supervisely
+output
