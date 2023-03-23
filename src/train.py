@@ -21,7 +21,7 @@ def train(input_dir: str, output_dir: str) -> None:
     print("Training model...")
     print(f"Generating output artifacts in {output_dir}...")
 
-    n_iter = 3
+    n_iter = 5
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
 
     for step in range(n_iter):
@@ -32,6 +32,7 @@ def train(input_dir: str, output_dir: str) -> None:
         # Log the data to TensorBoard
         writer.add_scalar('Loss', loss, step)
         print(f"Step [{step}]: loss={loss:.4f}")
+
 
         file_path = os.path.join(output_dir, f'step_{str(step).zfill(len(str(n_iter)))}.txt')
         
