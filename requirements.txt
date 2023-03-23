@@ -1,6 +1,7 @@
 # supervisely
-/home/grokhi/supervisely/sdk/supervisely
+# /home/grokhi/supervisely/sdk/supervisely
+git+https://github.com/supervisely/supervisely.git@cli_tensorboard
 typer
 tensorboard
-torch
+# torch
 # tensorflow
