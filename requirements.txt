@@ -1,4 +1,5 @@
-supervisely
+# supervisely
+/home/grokhi/supervisely/sdk/supervisely
 typer
 tensorboard
 torch

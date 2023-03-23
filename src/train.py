@@ -6,7 +6,6 @@ import os
 
 from torch.utils.tensorboard import SummaryWriter
 
-api: sly.Api = sly.Api.from_env()
 app = typer.Typer()
 
 
