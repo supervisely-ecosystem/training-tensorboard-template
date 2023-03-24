@@ -16,7 +16,9 @@
     "community_agent": false,
     "context_menu": {
       "target": [
-        "images_project",
+        "images_project"
+      ],
+      "_backup": [
         "videos_project",
         "volumes_project",
         "point_cloud_project",
