@@ -1,5 +1,3 @@
-# supervisely
-# /home/grokhi/supervisely/sdk/supervisely
-git+https://github.com/supervisely/supervisely.git@cli_tensorboard
-tensorboard
-torch
+supervisely==6.70.12
+tensorboard==2.12.0
+torch=2.0.0
