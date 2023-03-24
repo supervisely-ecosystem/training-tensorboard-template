@@ -37,6 +37,6 @@ Instance way:
 - In case of crush, you can view stored data in `'Team Files' -> Sypervisely agents -> <chosen node> ('Main node' by default) -> 'app-data' -> 'training-tensorboard-template'`
 
 Local debug way:
-- Ensure that all the neccessary (environmental variables)[https://developer.supervise.ly/getting-started/environment-variables] provided in `local.env` and `~/supervisely.env`.
+- Ensure that all the neccessary [environmental variables](https://developer.supervise.ly/getting-started/environment-variables) provided in `local.env` and `~/supervisely.env`.
 - Run in bash `ENV="development" && ./run.sh` and wait for task end results. 
 
