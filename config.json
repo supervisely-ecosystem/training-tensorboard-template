@@ -1,6 +1,7 @@
 {
-    "release": { "version":"v0.1.57", "name":"init" },
+    "release": { "version":"v0.1.59", "name":"init" },
     "slug": "grokhi/cli-tensorboard",
+    "docker_image": "supervisely/training-tensorboard-template:latest",
     "name": "Training tensorboard template",
     "type": "app",
     "version": "2.0.0",

@@ -13,7 +13,7 @@ def train(input_dir: str, output_dir: str) -> None:
     print(f"Opening data from {input_dir}...")
 
     files = os.listdir(input_dir)
-    print('Number of files in input directory:', len(files))
+    print('Number of objects in input directory:', len(files))
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
