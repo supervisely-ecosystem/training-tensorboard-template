@@ -22,12 +22,12 @@
 
 # Overview
 
-This is a bash script (`run.sh`) for running a Tensorboard visualization for a supervisely Project, as well as running a training script (`src/train.py`) and uploading the resulting artefacts to a Team files. During training process all artifacts data stored in synced dir (`$SLY_APP_DATA_DIR`) in case of sudden crush of training process.
+This is a bash script (`run.sh`) that runs a Tensorboard visualization of a Supervisely Project, as well as a training script (`src/train.py`) and uploads the resulting artifacts to a Team files. During the training process, all artifact data is stored in a synced directory (`$SLY_APP_DATA_DIR`) in case of sudden crash.
 
 # Description
 
-The script will download the project to a temporary directory, run Tensorboard, run the training script, and upload the resulting artifacts to a team folder. 
-Note: The `$OUTPUT_DIR` variable is set to `$SLY_APP_DATA_DIR`, which is the directory where synced artifacts data is stored. It is expected that the artifacts will be written to this directory by the training script. The supervisely command-line-interface (cli) is used then to upload the artifacts to a team folder for easy access.
+The script downloads the project to a directory, runs Tensorboard, runs the training script, and uploads the resulting artifacts to a team folder. 
+Note: the `$OUTPUT_DIR` variable is set to `$SLY_APP_DATA_DIR`, which is the directory where synced artifacts data is stored. It is expected that the artefacts will be written to this directory by the training script. The supervisely command-line-interface (cli) is used then to upload the artifacts to a team folder for easy access.
 
 # How to run
 Instance way:
