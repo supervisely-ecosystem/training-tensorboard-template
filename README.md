@@ -22,12 +22,12 @@
 
 # Overview
 
-This is a bash script (`run.sh`) for running a Tensorboard visualization for a supervisely Project, as well as running a training script (`src/train.py`) and uploading the resulting artefacts to a Team files. During training process all artifacts data stored in synced dir (`$SLY_APP_DATA_DIR`) in case of sudden crush of training process.
+This is a bash script (`run.sh`) that runs a Tensorboard visualization of a Supervisely Project, as well as a training script (`src/train.py`) and uploads the resulting artifacts to a Team files. During the training process, all artifact data is stored in a synced directory (`$SLY_APP_DATA_DIR`) in case of sudden crash.
 
 # Description
 
-The script will download the project to a temporary directory, run Tensorboard, run the training script, and upload the resulting artifacts to a team folder. 
-Note: The `$OUTPUT_DIR` variable is set to `$SLY_APP_DATA_DIR`, which is the directory where synced artifacts data is stored. It is expected that the artifacts will be written to this directory by the training script. The supervisely command-line-interface (cli) is used then to upload the artifacts to a team folder for easy access.
+The script downloads the project to a directory, runs Tensorboard, runs the training script, and uploads the resulting artifacts to a team folder. 
+Note: the `$OUTPUT_DIR` variable is set to `$SLY_APP_DATA_DIR`, which is the directory where synced artifacts data is stored. It is expected that the artefacts will be written to this directory by the training script. The supervisely command-line-interface (cli) is used then to upload the artifacts to a team folder for easy access.
 
 # How to run
 Instance way:
@@ -37,6 +37,6 @@ Instance way:
 - In case of crush, you can view stored data in `'Team Files' -> Sypervisely agents -> <chosen node> ('Main node' by default) -> 'app-data' -> 'training-tensorboard-template'`
 
 Local debug way:
-- Ensure that all the neccessary (environmental variables)[https://developer.supervise.ly/getting-started/environment-variables] provided in `local.env` and `~/supervisely.env`.
+- Ensure that all the neccessary [environmental variables](https://developer.supervise.ly/getting-started/environment-variables) provided in `local.env` and `~/supervisely.env`.
 - Run in bash `ENV="development" && ./run.sh` and wait for task end results. 
 
