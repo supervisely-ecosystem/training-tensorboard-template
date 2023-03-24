@@ -3,7 +3,7 @@ import os
 import time
 
 import supervisely as sly
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 
 def train(input_dir: str, output_dir: str) -> None:
     """
@@ -11,6 +11,9 @@ def train(input_dir: str, output_dir: str) -> None:
     and logs the training process. Generated artefacts backed up using synced_dir.
     """
     print(f"Opening data from {input_dir}...")
+
+    files = os.listdir(input_dir)
+    print('Number of files in input directory:', len(files))
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -21,7 +24,7 @@ def train(input_dir: str, output_dir: str) -> None:
     print("Training model...")
     print(f"Generating output artifacts in {output_dir}...")
 
-    n_iter = 5
+    n_iter = 30
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
 
     for step in range(n_iter):
