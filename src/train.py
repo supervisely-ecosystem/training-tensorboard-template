@@ -3,7 +3,7 @@ import os
 import time
 
 import supervisely as sly
-# from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 
 def train(input_dir: str, output_dir: str) -> None:
     """
