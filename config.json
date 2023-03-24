@@ -1,5 +1,5 @@
 {
-    "release": { "version":"v0.1.56", "name":"init" },
+    "release": { "version":"v0.1.57", "name":"init" },
     "slug": "grokhi/cli-tensorboard",
     "name": "Training tensorboard template",
     "type": "app",
