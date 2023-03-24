@@ -1,15 +1,4 @@
-# FROM supervisely/base-py-sdk:latest
-FROM tensorflow/tensorflow
+FROM supervisely/base-py-sdk:latest
 
-USER root
-
-RUN pip install supervisely
-# RUN pip install tensorboard
-# RUN pip install typer
-# RUN pip install torch
-
-WORKDIR /sly-app-data
-
-COPY /src /repo/src
-COPY /run.sh /repo/run.sh
-
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
