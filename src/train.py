@@ -22,7 +22,7 @@ def train(input_dir: str, output_dir: str) -> None:
     writer = SummaryWriter(output_dir)
 
     print("Training model...")
-    print(f"Generating output artifacts in {output_dir}...")
+    print(f"Generating output artefacts in {output_dir}...")
 
     n_iter = 30
     progress = sly.Progress(message='Training...', total_cnt=n_iter)
