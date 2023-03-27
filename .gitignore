@@ -2,7 +2,6 @@
 tmp/
 .venv/
 .venv_/
-.vscode/
 supervisely/
 
 src/__pycache__
@@ -15,3 +14,4 @@ typer_old.py
 supervisely
 output
 test.py
+.DS_Store
