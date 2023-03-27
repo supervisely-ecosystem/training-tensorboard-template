@@ -19,7 +19,7 @@
 
 This is a simple training app with bash script entrypoint (`run.sh`) that downloads Supervisely project, runs a Tensorboard to visualize the training metrics, runs training script (`src/train.py`) and uploads the resulting artefacts to a Team files. During the training process, output directory with artefacts is stored in a local directory and can be accessible right in Supervisely platform in your Team Files (Supervisely Agent will serve it automatically).
 
-We recommend you to focus on the two self-explanatory main scripts: `run.sh`, `src/train.py`, `config.json`. In case of any questions, please contact technical support.
+We recommend you to focus on the two self-explanatory main scripts: `run.sh`, `src/train.py`, `config.json` - to configure app release. In case of any questions, please contact technical support.
 
 Learn more in our [developer portal](https://developer.supervise.ly/app-development/neural-network-integration/training).
 
