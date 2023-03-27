@@ -1,4 +1,47 @@
 <div align="center" markdown>
+<img src="https://user-images.githubusercontent.com/12828725/228047393-639c9294-214d-4b1a-9b70-c9eec48adb50.jpg">
+
+# Training Tensorboard Template
+
+<p align="center">
+  <a href="#Overview">Overview</a>
+</p>
+
+[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervise.ly)
+[![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervise.ly/slack)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/training-tensorboard-template)
+[![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/training-tensorboard-template.png)](https://supervise.ly)
+
+</div>
+
+## Overview
+
+This is a simple training app with bash script entrypoint (`run.sh`) that downloads Supervisely project, runs a Tensorboard to visualize the training metrics, runs training script (`src/train.py`) and uploads the resulting artefacts to a Team files. During the training process, output directory with artefacts is stored in a local directory and can be accessible right in Supervisely platform in your Team Files (Supervisely Agent will serve it automatically).
+
+We recommend you to focus on the two self-explanatory main scripts: `run.sh`, `src/train.py`, `config.json`. In case of any questions, please contact technical support.
+
+
+# How To Use 
+
+1. Run app from the context menu of directory of file in **Team Files** -> `Run app` -> `Tensorboard`
+
+2. Wait for the app to import your data (project will be created in the current workspace)
+
+3. Stop app manually once you finish with it.
+
+<img src="https://user-images.githubusercontent.com/12828725/228075685-2946d65c-bba9-4a7e-90f7-66ee1cf5f77e.gif">
+
+
+
+
+
+
+
+
+
+
+
+<div align="center" markdown>
 
 <img src="" style="width: 100%;"/>
 
@@ -20,9 +63,6 @@
 
 </div>
 
-# Overview
-
-This is a bash script (`run.sh`) that runs a Tensorboard visualization of a Supervisely Project, as well as a training script (`src/train.py`) and uploads the resulting artefacts to a Team files. During the training process, all artefact data is stored in a synced directory (`$SLY_APP_DATA_DIR`) in case of sudden crash.
 
 # Description
 
@@ -30,13 +70,12 @@ The script downloads the project to a directory, runs Tensorboard, runs the trai
 Note: the `$OUTPUT_DIR` variable is set to `$SLY_APP_DATA_DIR`, which is the directory where synced artifacts data is stored. It is expected that the artefacts will be written to this directory by the training script. The supervisely command-line-interface (cli) is used then to upload the artefacts to a team folder for easy access.
 
 # How to run
-Instance way:
-- Choose your project and click on three-dot menu. Then, choose `Run App -> Training tensorboard template` and, if you need, specify selected `Advanced Settings`. Click `Run`.
-- Wait your project will be downloaded and your tensorboard logging server will run. You can open it in `Workspace Tasks` interface.
-- After successful task ending, there will be a direct link to a teamfiles folder.
+On Supervisely Instance:
+- Choose your project and click on three-dot menu. Then, choose `Run App -> Neural Networks -> Training tensorboard template`.
+- Wait your project will be downloaded and your tensorboard server will run. Press `Open` button to preview metrics in it.
+- Training artefacts will be automatically uploaded to the platform and the app will be stopped.
 - In case of crush, you can view stored data in `'Team Files' -> Supervisely agents -> <chosen node> ('Main node' by default) -> 'app-data' -> 'training-tensorboard-template'`
 
-Local debug way:
+For local debugging:
 - Ensure that all the neccessary [environmental variables](https://developer.supervise.ly/getting-started/environment-variables) provided in `local.env` and `~/supervisely.env`.
-- Run in bash `ENV="development" && ./run.sh` and wait for task end results. 
-
+- Run in bash `ENV="development" && ./run.sh` and wait the results. 
