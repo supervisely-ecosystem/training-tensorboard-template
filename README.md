@@ -21,7 +21,7 @@ This is a simple training app with bash script entrypoint (`run.sh`) that downlo
 
 We recommend you to focus on the two self-explanatory main scripts: `run.sh`, `src/train.py`, `config.json` - to configure app release. In case of any questions, please contact technical support.
 
-Learn more in our [developer portal](https://developer.supervise.ly/app-development/neural-network-integration/training).
+Learn more in ℹ️ [this tutorial](https://developer.supervise.ly/app-development/neural-network-integration/training/tensorboard-template) on Supervisely Developer portal.
 
 # How To Use 
 
