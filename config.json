@@ -19,6 +19,10 @@
   "community_agent": false,
   "context_menu": {
     "context_root": "Neural Networks",
-    "target": ["images_project"]
+    "target": [
+      "images_project",
+      "videos_project",
+      "volumes_project"
+    ]
   }
 }
