@@ -8,7 +8,6 @@
   ],
   "icon": "https://user-images.githubusercontent.com/12828725/228046357-2a325f87-710a-46e4-ac75-398af5d91f21.png",
   "poster": "https://user-images.githubusercontent.com/12828725/228047393-639c9294-214d-4b1a-9b70-c9eec48adb50.jpg?q=1",
-  "docker_image": "supervisely/training-tensorboard-template:latest",
   "entrypoint": "sh -e run.sh",
   "port": 8000,
   "proxyKeepUrl": true,
