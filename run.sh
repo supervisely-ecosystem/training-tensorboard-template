@@ -28,10 +28,10 @@ supervisely project download -id $PROJECT_ID --dst $INPUT_DIR
 
 # upload artefacts
 supervisely teamfiles upload -id $TEAM_ID --src $INPUT_DIR --dst "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" 
-supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
+# supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
 
 
-# cleaning the space on agent
-echo "Deleting $OUTPUT_DIR contents"
-rm -rf $OUTPUT_DIR/*
+# # cleaning the space on agent
+# echo "Deleting $OUTPUT_DIR contents"
+# rm -rf $OUTPUT_DIR/*
 
