@@ -1,3 +1,3 @@
-supervisely==git+https://github.com/supervisely/supervisely.git@cli_upload
+git+https://github.com/supervisely/supervisely.git@cli_upload
 # tensorboard==2.12.0
 # torch==2.0.0
