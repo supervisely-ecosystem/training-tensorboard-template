@@ -40,7 +40,9 @@ supervisely teamfiles upload -id $TEAM_ID --src $INPUT_DIR --dst "/my-training/$
 #     echo "Actual Team files directory: $TEAMFILES_DIR"
 # fi
 
-supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
+# supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
+
+supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir  "/empty/"
 
 
 # cleaning the space on agent
