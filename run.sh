@@ -27,22 +27,10 @@ supervisely project download -id $PROJECT_ID --dst $INPUT_DIR
 supervisely teamfiles upload -id $TEAM_ID --src $INPUT_DIR --dst "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" 
 
 
-# output=$(supervisely teamfiles upload -id $TEAM_ID --src $INPUT_DIR --dst "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" | tee /dev/tty)
-
-
-# directory=$(echo $output | grep -o "Local directory was sucessfully uploaded to Team files directory: '[^']*'")
-# TEAMFILES_DIR=$(echo $directory | grep -o "'[^']*'" | sed "s/'//g")
-
-
-# if [ "$TEAMFILES_DIR" != "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" ]
-# then
-#     echo "local and remote directories not matching!" #do your code here
-#     echo "Actual Team files directory: $TEAMFILES_DIR"
-# fi
-
 # supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
 
-supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir  "/empty/"
+# supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir  "/empty/"
+supervisely task set-output-dir --dir  "/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/"
 
 
 # cleaning the space on agent
