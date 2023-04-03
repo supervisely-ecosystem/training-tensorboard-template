@@ -1,4 +1,4 @@
-git+https://github.com/supervisely/supervisely.git@cli_upload
-# /home/grokhi/supervisely/sdk/supervisely
+# git+https://github.com/supervisely/supervisely.git@cli_upload
+/home/grokhi/supervisely/sdk/supervisely
 # tensorboard==2.12.0
 # torch==2.0.0
