@@ -1,4 +1,4 @@
-git+https://github.com/supervisely/supervisely.git@ultimate_progress
+git+https://github.com/supervisely/supervisely.git@progress_tqdm
 # git+https://github.com/supervisely/supervisely.git@add_new_attr_to_progress
 # /home/grokhi/supervisely/sdk/supervisely
 # tensorboard==2.12.0
