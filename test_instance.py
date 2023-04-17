@@ -103,6 +103,7 @@ p = MyTqdm(
 
 api.file.download(TEAM_ID, TF_PATH, LOC_PATH, progress_cb=p.update)
 
+sleep(5)
 print(os.getcwd())
 print(os.listdir(os.getcwd()))
 # size = api.file.get_directory_size(439, "/test.tar")
