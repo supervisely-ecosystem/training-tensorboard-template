@@ -12,11 +12,11 @@ if sly.is_development():
     load_dotenv(os.path.expanduser("~/supervisely.env"))
     load_dotenv("local.env")
 api = sly.Api()
-# os.environ["ENV"] = "production"
+os.environ["ENV"] = "production"
 
 print("___________START_________-")
 
-TF_PATH = "/cardio.tar"
+TF_PATH = "/my_project.tar"
 LOC_PATH = "prog_test.tar"
 TEAM_ID = sly.env.team_id()
 
@@ -76,7 +76,7 @@ class MyTqdm(tqdm, sly.Progress):
         if sly.is_development():
             super().update(count)
         else:
-            super().iters_done_report(count)
+            sly.Progress.iters_done_report(self, count)
 
 
 # data_len = 145
