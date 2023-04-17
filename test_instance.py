@@ -65,6 +65,9 @@ class MyTqdm(tqdm, sly.Progress):
                 **kwargs,
             )
             sly.Progress.__init__(
+                self,
+                message=message,
+                total=total_cnt,
                 *args,
                 **kwargs,
             )
