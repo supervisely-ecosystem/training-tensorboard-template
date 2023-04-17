@@ -16,8 +16,8 @@ api = sly.Api()
 
 print("___________START_________")
 
-TF_PATH = "/cardio.tar"
-LOC_PATH = "prog_test.tar"
+TF_PATH = "/vid/"
+LOC_PATH = "vid/"
 TEAM_ID = sly.env.team_id()
 
 
@@ -64,6 +64,10 @@ class MyTqdm(tqdm, sly.Progress):
                 *args,
                 **kwargs,
             )
+            sly.Progress.__init__(
+                *args,
+                **kwargs,
+            )
 
     def update(self, count):
         if sly.is_development():
@@ -82,11 +86,18 @@ class MyTqdm(tqdm, sly.Progress):
 #         progress.update(len(batch))
 
 
+# p = MyTqdm(
+#     message="Downloading data with MyTqdm",
+#     total_cnt=api.file.get_directory_size(TEAM_ID, TF_PATH),
+#     unit="B",
+#     unit_scale=True,
+# )
+
 p = MyTqdm(
-    message="Downloading data with MyTqdm",
+    message="Dwnld MyTqdm instance",
     total_cnt=api.file.get_directory_size(TEAM_ID, TF_PATH),
-    unit="B",
-    unit_scale=True,
+    is_size=True,
+    need_info_log=True,
 )
 
 # p = tqdm(
@@ -105,7 +116,8 @@ api.file.download(TEAM_ID, TF_PATH, LOC_PATH, progress_cb=p.update)
 
 sleep(5)
 print(os.getcwd())
-print(os.listdir(os.getcwd()))
+print(os.listdir(LOC_PATH))
+
 # size = api.file.get_directory_size(439, "/test.tar")
 # progress_tqdm_file = MyTqdm("File downloaded: ", total_cnt=size, is_size=True)
 # api.file.download(
