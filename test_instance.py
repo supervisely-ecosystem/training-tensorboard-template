@@ -14,10 +14,10 @@ if sly.is_development():
 api = sly.Api()
 # os.environ["ENV"] = "production"
 
-print("___________START_________")
+print("___________START_________-")
 
-TF_PATH = "/vid/"
-LOC_PATH = "vid/"
+TF_PATH = "/cardio.tar"
+LOC_PATH = "prog_test.tar"
 TEAM_ID = sly.env.team_id()
 
 
@@ -67,7 +67,7 @@ class MyTqdm(tqdm, sly.Progress):
             sly.Progress.__init__(
                 self,
                 message=message,
-                total=total_cnt,
+                total_cnt=total_cnt,
                 *args,
                 **kwargs,
             )
@@ -118,8 +118,6 @@ p = MyTqdm(
 api.file.download(TEAM_ID, TF_PATH, LOC_PATH, progress_cb=p.update)
 
 sleep(5)
-print(os.getcwd())
-print(os.listdir(LOC_PATH))
 
 # size = api.file.get_directory_size(439, "/test.tar")
 # progress_tqdm_file = MyTqdm("File downloaded: ", total_cnt=size, is_size=True)
