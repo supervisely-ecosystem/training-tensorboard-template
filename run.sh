@@ -30,11 +30,11 @@ nohup tensorboard --logdir $OUTPUT_DIR --port 8000 --host 0.0.0.0 --reload_multi
 python3 src/train.py --input-dir $INPUT_DIR --output-dir $OUTPUT_DIR  
 
 # upload artefacts
-supervisely teamfiles upload -id $TEAM_ID --src $OUTPUT_DIR --dst $DST_DIR
+supervisely teamfiles upload -id $TEAM_ID --src $OUTPUT_DIR --dst "$DST_DIR"
 
 if [ "$ENV" != "development" ]
 then
-    supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir $DST_DIR
+    supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "$DST_DIR"
 fi 
 
 # cleaning the space on agent
