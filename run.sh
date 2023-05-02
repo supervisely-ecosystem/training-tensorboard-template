@@ -10,12 +10,17 @@ then
 fi 
 
 INPUT_DIR="/tmp/training_data/"     # training data 
-OUTPUT_DIR=$SLY_APP_DATA_DIR        # artefacts data 
+OUTPUT_DIR=$SLY_APP_DATA_DIR        # current artefacts data 
 # Note: variable $SLY_APP_DATA_DIR is for synced_data_dir which mirrors artefacts data on teamfiles
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
+HISTORY_DIR="/my-training/"        # history artefacts data in Team files
 
 # download project 
 supervisely project download -id $PROJECT_ID --dst $INPUT_DIR
+
+# download history artefacts
+supervisely teamfiles download -id $TEAM_ID --src $HISTORY_DIR --dst $OUTPUT_DIR 
+# --filter "*.tfevents.*"
 
 # run tensorboard
 nohup tensorboard --logdir $OUTPUT_DIR --port 8000  --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 
