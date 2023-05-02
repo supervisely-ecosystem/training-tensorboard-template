@@ -22,7 +22,7 @@ def train(input_dir: str, output_dir: str) -> None:
     writer = SummaryWriter(output_dir)
 
     iters = 150
-    steepness = random.uniform(0.01, 10.0)
+    steepness = random.uniform(0.1, 10.0)
     progress = sly.Progress(message="Training...", total_cnt=iters)
     for step in range(iters):
         time.sleep(0.1)  # imitates training process
