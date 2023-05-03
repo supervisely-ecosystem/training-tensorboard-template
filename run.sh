@@ -13,8 +13,8 @@ INPUT_DIR_LOCAL="/tmp/training_data/"                   # local training data
 OUTPUT_DIR_LOCAL="$SLY_APP_DATA_DIR/output/"            # local output artefacts data
 # Note: variable $SLY_APP_DATA_DIR is for synced_data_dir which mirrors artefacts data on teamfiles
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
-HISTORY_DIR="/my-training/"                             # teamfiles history artefacts data
-HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history/"          # local history artefacts data
+HISTORY_DIR="/my-training/"                             # teamfiles history logs data
+HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history/"          # local history logs data
 DST_DIR="/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" # teamfiles destination directory for output artefacts data
 
 # download project 
