@@ -10,7 +10,7 @@ then
 fi 
 
 INPUT_DIR="/tmp/training_data/"                         # training data
-OUTPUT_DIR_LOCAL_LOCAL="$SLY_APP_DATA_DIR/output"       # current artefacts data
+OUTPUT_DIR_LOCAL="$SLY_APP_DATA_DIR/output"       # current artefacts data
 # Note: variable $SLY_APP_DATA_DIR is for synced_data_dir which mirrors artefacts data on teamfiles
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
 HISTORY_DIR="/my-training/"                             # history artefacts data in Team files
