@@ -10,11 +10,11 @@ then
 fi 
 
 INPUT_DIR_LOCAL="/tmp/training_data/"                   # local training data
-OUTPUT_DIR_LOCAL="$SLY_APP_DATA_DIR/output"             # local output artefacts data
+OUTPUT_DIR_LOCAL="$SLY_APP_DATA_DIR/output/"            # local output artefacts data
 # Note: variable $SLY_APP_DATA_DIR is for synced_data_dir which mirrors artefacts data on teamfiles
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
 HISTORY_DIR="/my-training/"                             # teamfiles history artefacts data
-HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history"           # local history artefacts data
+HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history/"          # local history artefacts data
 DST_DIR="/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" # teamfiles destination directory for output artefacts data
 
 # download project 
@@ -31,12 +31,9 @@ python3 src/train.py --input-dir "$INPUT_DIR_LOCAL" --output-dir "$OUTPUT_DIR_LO
 
 # upload artefacts
 supervisely teamfiles upload -id $TEAM_ID --src "$OUTPUT_DIR_LOCAL" --dst "$DST_DIR"
-
-if [ "$ENV" != "development" ]
-then
-    supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "$DST_DIR"
-fi 
-
+# set final Team files dir in Workspace tasks
+supervisely task set-output-dir -id $TASK_ID --team-id $TEAM_ID  --dir "$DST_DIR"
+ 
 # cleaning the space on agent
 echo "Deleting "$SLY_APP_DATA_DIR" contents"
 rm -rf "$SLY_APP_DATA_DIR/*"
