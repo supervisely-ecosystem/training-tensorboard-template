@@ -15,7 +15,7 @@ OUTPUT_DIR_LOCAL="$SLY_APP_DATA_DIR/output"             # local output artefacts
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
 HISTORY_DIR="/my-training/"                             # teamfiles history artefacts data
 HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history"           # local history artefacts data
-DST_DIR="/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" # destination directory in Team files for output artefacts data
+DST_DIR="/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" # teamfiles destination directory for output artefacts data
 
 # download project 
 supervisely project download -id $PROJECT_ID --dst $INPUT_DIR_LOCAL
