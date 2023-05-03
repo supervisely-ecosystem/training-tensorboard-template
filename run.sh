@@ -9,28 +9,28 @@ then
     export API_TOKEN
 fi 
 
-INPUT_DIR="/tmp/training_data/"     # training data 
-OUTPUT_DIR=$SLY_APP_DATA_DIR        # current artefacts data 
+INPUT_DIR="/tmp/training_data/"                         # training data
+OUTPUT_DIR_LOCAL_LOCAL="$SLY_APP_DATA_DIR/output"       # current artefacts data
 # Note: variable $SLY_APP_DATA_DIR is for synced_data_dir which mirrors artefacts data on teamfiles
 PROJECT_NAME=$(supervisely project get-name -id $PROJECT_ID)
-HISTORY_DIR="/my-training/"        # history artefacts data in Team files
+HISTORY_DIR="/my-training/"                             # history artefacts data in Team files
+HISTORY_DIR_LOCAL="$SLY_APP_DATA_DIR/history"           # current history data
 DST_DIR="/my-training/$TASK_ID-$PROJECT_ID-$PROJECT_NAME/" # destination directory in Team files
 
 # download project 
 supervisely project download -id $PROJECT_ID --dst $INPUT_DIR
 
 # download history artefacts
-supervisely teamfiles download -id $TEAM_ID --src $HISTORY_DIR --dst $OUTPUT_DIR -i
-# --filter "*.tfevents.*"
+supervisely teamfiles download -id $TEAM_ID --src "$HISTORY_DIR" --dst "$HISTORY_DIR_LOCAL" --filter ".tfevents." -i
 
 # run tensorboard
-nohup tensorboard --logdir $OUTPUT_DIR --port 8000 --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 
+nohup tensorboard --logdir Current:"$OUTPUT_DIR_LOCAL",History:"$HISTORY_DIR_LOCAL" --port 8000 --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 
 
 # training script
-python3 src/train.py --input-dir $INPUT_DIR --output-dir $OUTPUT_DIR  
+python3 src/train.py --input-dir "$INPUT_DIR" --output-dir "$OUTPUT_DIR_LOCAL"  
 
 # upload artefacts
-supervisely teamfiles upload -id $TEAM_ID --src $OUTPUT_DIR --dst "$DST_DIR"
+supervisely teamfiles upload -id $TEAM_ID --src "$OUTPUT_DIR_LOCAL" --dst "$DST_DIR"
 
 if [ "$ENV" != "development" ]
 then
@@ -38,5 +38,5 @@ then
 fi 
 
 # cleaning the space on agent
-echo "Deleting $OUTPUT_DIR contents"
-rm -rf $OUTPUT_DIR/*
+echo "Deleting "$SLY_APP_DATA_DIR" contents"
+rm -rf "$SLY_APP_DATA_DIR/*"
