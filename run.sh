@@ -24,7 +24,7 @@ supervisely project download -id $PROJECT_ID --dst $INPUT_DIR
 supervisely teamfiles download -id $TEAM_ID --src "$HISTORY_DIR" --dst "$HISTORY_DIR_LOCAL" --filter ".tfevents." -i
 
 # run tensorboard
-nohup tensorboard --logdir Current:"$OUTPUT_DIR_LOCAL",History:"$HISTORY_DIR_LOCAL" --port 8000 --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 
+nohup tensorboard --logdir_spec Current:"$OUTPUT_DIR_LOCAL",History:"$HISTORY_DIR_LOCAL" --port 8000 --host 0.0.0.0 --reload_multifile=true --load_fast=false --path_prefix=$BASE_URL &> output & sleep 5 
 
 # training script
 python3 src/train.py --input-dir "$INPUT_DIR" --output-dir "$OUTPUT_DIR_LOCAL"  
