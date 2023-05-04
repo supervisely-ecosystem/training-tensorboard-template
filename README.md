@@ -25,20 +25,19 @@ Learn more in ℹ️ [this tutorial](https://developer.supervise.ly/app-developm
 
 # 🤓 What should you pay attention to
 
-1. The proposed structure of saved files will be looked like:
+1. The proposed structure of saved training runs will look like:
 
 ```text
 .
 └── my-training
     └── <project-id-1>-<project-name-1>
-        └── <task-id-1-1>
-        └── <task-id-1-2>
-        └── <task-id-1-3>
+        └── <task-id-1-1> # here your artefacts data of <task-id-1-1> stored
+        └── <task-id-1-2> # same for <task-id-1-2>
+        └── <task-id-1-3> # etc.
         └── ...
     └── <project-id-2>-<project-name-2>
         └── <task-id-2-1>
         └── <task-id-2-2>
-        └── <task-id-2-3>
         └── ...
 
 ```
@@ -47,7 +46,13 @@ Note, that you can always change `DST_DIR` in the `run.sh` in any way it will su
 
 2. You can always load your previous logs just by simply specifying `HISTORY_DIR` in `run.sh`. Here how it will look like in the tensorboard interface:
 
-<!-- <screen> -->
+![Tensorboard logs with history logs of previous runs](https://user-images.githubusercontent.com/78355358/236162006-5dceeb9a-39fa-46a7-9834-eb5c4c1cba89.gif)
+
+Note, that the script will automatically ignore non-existence of the history folder, even if you do not have any history logs (i.e. `*.tfevents.*` files). It means that you do not need to bother about additional `run.sh` customization!
+
+3. The `SLY_APP_DATA_DIR` variable represents a synced data directory that connects locally stored files in a container with the Team files directory.
+
+This allows the data to be viewed and copied on the remoted directory in Team files. This directory serves as a backup for the training artefacts in case the training script suddenly crashes. You can view the saved data in `Team Files` -> `Supervisely agents` -> `<chosen node>` ('Main node' by default) -> `app-data` -> `training-tensorboard-template`.
 
 # How To Use
 
