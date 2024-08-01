@@ -18,7 +18,7 @@
   "integrated_into": ["standalone"],
   "store_data_on_agent": true,
   "community_agent": false,
-  "context_menu": {
+  "_context_menu": {
     "context_root": "Neural Networks",
     "target": [
       "images_project"
