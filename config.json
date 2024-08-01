@@ -22,7 +22,6 @@
     "context_root": "Neural Networks",
     "target": [
       "images_project",
-      "videos_project",
       "volumes_project"
     ]
   }
