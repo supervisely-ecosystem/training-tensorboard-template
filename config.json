@@ -21,8 +21,7 @@
   "context_menu": {
     "context_root": "Neural Networks",
     "target": [
-      "images_project",
-      "volumes_project"
+      "images_project"
     ]
   }
 }
