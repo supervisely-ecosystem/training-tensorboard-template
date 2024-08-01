@@ -54,6 +54,8 @@ Note, that the script will automatically ignore non-existence of the history fol
 
 This allows the data to be viewed and copied on the remoted directory in Team files. This directory serves as a backup for the training artefacts in case the training script suddenly crashes. You can view the saved data in `Team Files` -> `Supervisely agents` -> `<chosen node>` ('Main node' by default) -> `app-data` -> `training-tensorboard-template`.
 
+4. If you want to release the private application, don't forget to update the `config.json` file: change the `categories` and `context_menu` fields. Check out the examples for these field values that we stored in `_categories` and `_context_menu` (and remove these examples).
+
 # How To Use
 
 On Supervisely Instance:
