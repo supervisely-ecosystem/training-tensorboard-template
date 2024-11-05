@@ -8,10 +8,10 @@
   <a href="#How-To-Use">How To Use</a>
 </p>
 
-[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervise.ly)
-[![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervise.ly/slack)
+[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervisely.com)
+[![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervisely.com/slack)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/training-tensorboard-template)
-[![views](https://app.supervise.ly/img/badges/views/supervisely-ecosystem/training-tensorboard-template.png)](https://supervise.ly)
+[![views](https://app.supervisely.com/img/badges/views/supervisely-ecosystem/training-tensorboard-template.png)](https://supervisely.com)
 
 </div>
 
@@ -21,7 +21,7 @@ This is a simple training app with bash script entrypoint (`run.sh`) that downlo
 
 We recommend you to focus on the two self-explanatory main scripts: `run.sh`, `src/train.py`. To release modified template as a private app use `supervisely release` bash command (Learn more [here](https://developer.supervisely.com/app-development/basics/add-private-app)). In case of any questions, please contact technical support.
 
-Learn more in ℹ️ [this tutorial](https://developer.supervise.ly/app-development/neural-network-integration/training/tensorboard-template) on Supervisely Developer portal.
+Learn more in ℹ️ [this tutorial](https://developer.supervisely.com/app-development/neural-network-integration/training/tensorboard-template) on Supervisely Developer portal.
 
 # 🤓 What should you pay attention to
 
@@ -66,5 +66,5 @@ On Supervisely Instance:
 - In case of crush, you can view stored data in `'Team Files' -> Supervisely agents -> <chosen node> ('Main node' by default) -> 'app-data' -> 'training-tensorboard-template'`
 
 For local debugging:
-- Ensure that all the neccessary [environmental variables](https://developer.supervise.ly/getting-started/environment-variables) provided in `local.env` and `~/supervisely.env`.
+- Ensure that all the neccessary [environmental variables](https://developer.supervisely.com/getting-started/environment-variables) provided in `local.env` and `~/supervisely.env`.
 - Run in bash `ENV="development" && ./run.sh` and wait the results. 
